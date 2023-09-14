@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,6 +82,14 @@ Route::get('/{id}', function ($id){
     return ("One single task");
 })->name('tasks.show');
 
+Route::get('/tasks/{id}', function ($id) use ($tasks) {
+    $task = collect($tasks)->firstWhere('id', $id);
+
+    if (!$task) {
+        abort(Response::HTTP_NOT_FOUND);
+    }
+    return view('show', ['task' => $task]);
+})->name('tasks.show');
 // Route::get('/test', function () {
 //     return 'Hello';
 // })->name('hello');

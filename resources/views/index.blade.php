@@ -1,4 +1,6 @@
-<div>Hello I am blade template!</div>
+@extends('layouts.app')
+
+@section('title', 'The list of tasks!')
 {{-- old  --}}
 {{-- @if (@isset($name) != null)
     <div>The name is: {{ $name }}</div>
@@ -8,7 +10,7 @@
     The name is: {{ $name }}
 @endisset
 
-<h1>The list of tasks</h1>
+@section('content')
 <div>
     @if (count($tasks))
         @foreach ($tasks as $task)
@@ -27,4 +29,5 @@
         <div>There are no task</div>
     @endforelse
 </div>
+@endsection
 
