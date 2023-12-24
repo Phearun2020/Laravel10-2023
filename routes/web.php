@@ -78,17 +78,13 @@ Route::get('/', function () use ($tasks) {
     ]);
 })->name('tasks.index');
 
-Route::get('/{id}', function ($id){
-    return ("One single task");
-})->name('tasks.show');
+Route::get('/tasks', function (){
+    return view('index', ['tasks' => \App\Models\Task::latest()->where('completed', true)->get()]);
+})->name('tasks.index');
 
-Route::get('/tasks/{id}', function ($id) use ($tasks) {
-    $task = collect($tasks)->firstWhere('id', $id);
+Route::get('/tasks/{id}', function ($id) {
 
-    if (!$task) {
-        abort(Response::HTTP_NOT_FOUND);
-    }
-    return view('show', ['task' => $task]);
+    return view('show', ['task' => \App\Models\Task::findOrFail($id)]);
 })->name('tasks.show');
 // Route::get('/test', function () {
 //     return 'Hello';

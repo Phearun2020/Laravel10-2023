@@ -74,3 +74,4 @@ php artisan make:factory TaskFactory --model=Task
 + PHP, artisan migrate refresh database 
     - php artisan migrate:refresh --seed
 
++ php artisan tinker ->Example:\App\Models\Task::latest()->where('completed', true)->get();
