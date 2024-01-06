@@ -77,6 +77,7 @@ php artisan make:factory TaskFactory --model=Task
 + php artisan tinker ->Example:\App\Models\Task::latest()->where('completed', true)->get();
 
 # Adminer 8080
++ docker compose ps and up
 server: mysql
 username:root
 password: 1....
