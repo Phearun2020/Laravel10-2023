@@ -75,3 +75,8 @@ php artisan make:factory TaskFactory --model=Task
     - php artisan migrate:refresh --seed
 
 + php artisan tinker ->Example:\App\Models\Task::latest()->where('completed', true)->get();
+
+# Adminer 8080
+server: mysql
+username:root
+password: 1....
