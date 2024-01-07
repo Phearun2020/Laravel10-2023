@@ -81,3 +81,6 @@ php artisan make:factory TaskFactory --model=Task
 server: mysql
 username:root
 password: 1....
+
+# Request
+- php artisan make:request TaskRequest
