@@ -19,7 +19,7 @@
 
         <div>
             <label for="title" class="form-label">Title</label>
-            <input type="text" name="title" id="title" class="form-control" required> </div> <div class="mb-3">
+            <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
             @error('title')
                 <p class="error-message">{{ $message }}</p>
             @enderror
@@ -27,7 +27,7 @@
 
         <div>
             <label for="description" class="form-label">Description</label>
-            <textarea name="description" id="description" rows="3" class="form-control" required></textarea> </div> <div class="mb-3">
+            <textarea name="description" id="description" rows="3" class="form-control" >{{ old('description') }}</textarea>
             @error('description')
                 <p class="error-message">{{ $message }}</p>
             @enderror
@@ -35,7 +35,7 @@
 
         <div>
             <label for="long_description" class="form-label">Long Description</label>
-            <textarea name="long_description" id="long_description" rows="10" class="form-control" required></textarea> </div>
+            <textarea name="long_description" id="long_description" rows="10" class="form-control" >{{ old('long_description') }}</textarea>
             @error('long_description')
                 <p class="error-message">{{ $message }}</p>
             @enderror
