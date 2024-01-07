@@ -12,14 +12,13 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('tasks.store') }}" method="POST" class="needs-validation" novalidate>
+    <form action="{{ route('tasks.update', ['id' => $task->id]) }}" method="POST">
 
         @csrf
-        <div class="mb-3">
-
+        @method('PUT')
         <div>
             <label for="title" class="form-label">Title</label>
-            <input type="text" name="title" id="title" class="form-control" required> </div> <div class="mb-3">
+            <input type="text" name="title" id="title" class="form-control" value="{{ $task->title }}">
             @error('title')
                 <p class="error-message">{{ $message }}</p>
             @enderror
@@ -27,7 +26,7 @@
 
         <div>
             <label for="description" class="form-label">Description</label>
-            <textarea name="description" id="description" rows="3" class="form-control" required></textarea> </div> <div class="mb-3">
+            <textarea name="description" id="description" rows="3" class="form-control">{{ $task->description }}</textarea>
             @error('description')
                 <p class="error-message">{{ $message }}</p>
             @enderror
@@ -35,11 +34,11 @@
 
         <div>
             <label for="long_description" class="form-label">Long Description</label>
-            <textarea name="long_description" id="long_description" rows="10" class="form-control" required></textarea> </div>
+            <textarea name="long_description" id="long_description" rows="10" class="form-control">{{ $task->long_description }}</textarea>
             @error('long_description')
                 <p class="error-message">{{ $message }}</p>
             @enderror
         </div>
-        <div><button type="submit" class="btn btn-primary">Add</button></div>
+        <div><button type="submit" class="btn btn-primary">Edit</button></div>
     </form>
 @endsection
