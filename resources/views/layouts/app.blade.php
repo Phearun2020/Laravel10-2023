@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     {{-- blade-formatter-disable --}}
     <style type="text/tailwindcss">
         .btn {
@@ -33,9 +34,13 @@
 <body class="container mx-auto mt-10 mb-10 max-w-3xl">
     <h1 class=" text-2xl">@yield('title')</h1>
 
-    <div>
+    <div x-data="{ flash: true}">
         @if (session()->has('success'))
-            <div>{{ session('success') }}</div>
+            <div x-show="flash" class="relative  mb-10 rounded border border-green-400 bg-green-100 px-4 py-3 text-lg text-green-700" role="alert">
+                <strong class="font-bold">Success!</strong>
+                <div>{{ session('success') }}</div>
+                <span @click="flash = false" class="cursor-pointer absolute top-0 bottom-0 px-4 py-3 right-0">X</span>
+            </div>
         @endif
         @yield('content')
     </div>
